@@ -1,11 +1,12 @@
+import PdfUpload from './components/PdfUpload';
 import './App.css';
 
 function App() {
   return (
     <div>
-      checkout
+      <h1>PDF Upload and Extract</h1>
+      <PdfUpload />
     </div>
   );
 }
-
 export default App;
