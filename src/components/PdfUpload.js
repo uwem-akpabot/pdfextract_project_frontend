@@ -1,5 +1,4 @@
-// src/components/UploadForm.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 const PdfUpload = () => {
@@ -25,7 +24,17 @@ const PdfUpload = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      setResponseData(response.data);
+      const data = response.data;
+
+      // Ensure nouns and verbs are arrays
+      if (!Array.isArray(data.nouns)) {
+        data.nouns = [];
+      }
+      if (!Array.isArray(data.verbs)) {
+        data.verbs = [];
+      }
+
+      setResponseData(data);
     } catch (error) {
       console.error('Error uploading file:', error);
     }
@@ -61,5 +70,4 @@ const PdfUpload = () => {
     </div>
   );
 };
-
 export default PdfUpload;
